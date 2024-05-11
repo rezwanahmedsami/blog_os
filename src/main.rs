@@ -14,31 +14,27 @@ fn panic(info: &PanicInfo) -> ! {
 
 #[no_mangle] // don't mangle the name of this function
 pub extern "C" fn _start() -> ! {
+    
 
-    // let vga_buffer = 0xb8000 as *mut u8;
+    // // array of some texts and sentances
+    let texts = [
+        "Hello World", 
+        "My name is rezwan", 
+        "I am a software engineer",
+        "I am a rustacean",
+        "I am a rust developer",
+        "I am a web developer",
+        "I am a full stack developer"
+        
+        ];
+    for text in texts.iter() {
+        println!("{}", text);
+    }
+    // print a big word "REZWAN AHMED SAMI" by special chars
 
-    // for (i, &byte) in TITLE.iter().enumerate() {
-    //     unsafe {
-    //         *vga_buffer.offset(i as isize * 2) = byte;
-    //         *vga_buffer.offset(i as isize * 2 + 1) = 0xb;
-    //     }
-    // }
 
-    // // write `Hello, World!` to the VGA buffer in 2nd line
-    // let vga_buffer = 0xb8000 as *mut u8;
-    // let mut hello = HELLO;
-    // for i in 0..HELLO.len() {
-    //     unsafe {
-    //         *vga_buffer.offset((i + 80) as isize * 2) = hello[i];
-    //         *vga_buffer.offset((i + 80) as isize * 2 + 1) = 0xb;
-    //     }
-    // }
-
-    // use core::fmt::Write;
-    // vga_buffer::WRITER.lock().write_str("Hello again").unwrap();
-    // write!(vga_buffer::WRITER.lock(), ", some numbers: {} {}", 42, 1.337).unwrap();
-
-    println!("Hello World{}", "!");
+    // println!("Hello World{}", "!");
+    // println!("My name is rezwan");
     // this function is the entry point, since the linker looks for a function
     // named `_start` by default
     loop {}
